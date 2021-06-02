@@ -5,7 +5,7 @@ Set the SMTP transport for MailPoet
 ## Installation and use
 
 1. Download and save the plugin in `wp-content/mu-plugins`
-1. Edit and set the constants, or use the filters to set the SMTP values.
+1. [Edit and set the constants](https://github.com/soderlind/mu-mailpoet-smtp/blob/main/mu-mailpoet-smtp.php#L29-L33), or use the [filters](#filters) to set the SMTP values.
 1. Select SMTP as transport in MailPoet and leave the rest of the SMTP config empty.
 
 ### MailPoet SMTP
