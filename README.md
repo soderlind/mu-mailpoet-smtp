@@ -17,11 +17,40 @@ Set the SMTP transport for MailPoet
 You can override the values in the plugin using the following filters:
 
 - mu_mailpoet_smtp_host
+	```php
+	add_filter( 'mu_mailpoet_smtp_host', function( $smtp_host ) {
+		$smtp_host = 'smtp.mailgun.com';
+		return $smtp_host;
+	} );
+	```
 - mu_mailpoet_smtp_port
+	```php
+	add_filter( 'mu_mailpoet_smtp_port', function( $smtp_port ) {
+		$smtp_port = 587;
+		return $smtp_port;
+	} );
+	```
 - mu_mailpoet_smtp_encryption
+	```php
+	add_filter( 'mu_mailpoet_smtp_encryption', function( $smtp_encryption ) {
+		$smtp_encryption = 'tls';
+		return $smtp_encryption;
+	} );
+	```
 - mu_mailpoet_smtp_username
+	```php
+	add_filter( 'mu_mailpoet_smtp_username', function( $smtp_username ) {
+		$smtp_username = 'smtpuser@smtphost.tld';
+		return $smtp_username;
+	} );
+	```
 - mu_mailpoet_smtp_password
-
+	```php
+	add_filter( 'mu_mailpoet_smtp_password', function( $smtp_password ) {
+		$smtp_password = 'smtppassword';
+		return $smtp_password;
+	} );
+	```
 ## Copyright and License
 
 MU MailPoet SMTP is copyright 2021 Per Soderlind
