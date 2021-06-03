@@ -12,7 +12,7 @@
  * Plugin URI: https://github.com/soderlind/mu-mailpoet-smtp
  * GitHub Plugin URI: https://github.com/soderlind/mu-mailpoet-smtp
  * Description: Set the SMTP transport for MailPoet
- * Version:     0.0.1
+ * Version:     0.0.2
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
  * Text Domain: mu-mailpoet-smtp
@@ -26,11 +26,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	wp_die();
 }
 
-define( 'MU_MAILPOET_SMTP_HOST', apply_filters( 'mu_mailpoet_smtp_host', 'smtp.domain.tld' ) );
-define( 'MU_MAILPOET_SMTP_PORT', apply_filters( 'mu_mailpoet_smtp_port', 25 ) ); // 25, 587, and 465 (SSL/TLS)
-define( 'MU_MAILPOET_SMTP_ENCRYPTION', apply_filters( 'mu_mailpoet_smtp_encryption', null ) ) ; // null, 'tls' or 'ssl'
-define( 'MU_MAILPOET_SMTP_USERNAME', apply_filters( 'mu_mailpoet_smtp_username', 'username' ) );
-define( 'MU_MAILPOET_SMTP_PASSWORD', apply_filters( 'mu_mailpoet_smtp_password', 'password' ) );
+define( 'MU_MAILPOET_SMTP_HOST',  'smtp.domain.tld' );
+define( 'MU_MAILPOET_SMTP_PORT',  25 ); // 25, 587, 465 ...
+define( 'MU_MAILPOET_SMTP_ENCRYPTION', null ) ; // null, 'tls' or 'ssl'
+define( 'MU_MAILPOET_SMTP_USERNAME', 'username' );
+define( 'MU_MAILPOET_SMTP_PASSWORD', 'password' );
 
 /**
  * $smtp_transport is a Swift_SmtpTransport object.
@@ -40,11 +40,11 @@ define( 'MU_MAILPOET_SMTP_PASSWORD', apply_filters( 'mu_mailpoet_smtp_password',
 add_filter( 'mailpoet_mailer_smtp_transport_agent', function( $smtp_transport ) {
 	if ( empty( $smtp_transport->getHost() )) {
 		$smtp_transport
-			->setHost( MU_MAILPOET_SMTP_HOST ) // default 'localhost'
-			->setPort( MU_MAILPOET_SMTP_PORT ) // default 25
-			->setEncryption( MU_MAILPOET_SMTP_ENCRYPTION ) // default null
-			->setUsername( MU_MAILPOET_SMTP_USERNAME )
-			->setPassword( MU_MAILPOET_SMTP_PASSWORD );
+			->setHost( apply_filters( 'mu_mailpoet_smtp_host', MU_MAILPOET_SMTP_HOST ) )
+			->setPort( apply_filters( 'mu_mailpoet_smtp_port', MU_MAILPOET_SMTP_PORT ) )
+			->setEncryption( apply_filters( 'mu_mailpoet_smtp_encryption', MU_MAILPOET_SMTP_ENCRYPTION ) )
+			->setUsername( apply_filters( 'mu_mailpoet_smtp_username', MU_MAILPOET_SMTP_USERNAME ) )
+			->setPassword( apply_filters( 'mu_mailpoet_smtp_password', MU_MAILPOET_SMTP_PASSWORD ) );
 	}
 	return $smtp_transport;
 } );
