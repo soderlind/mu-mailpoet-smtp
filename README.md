@@ -1,3 +1,8 @@
+> **Depcrecation notice, please see:**
+> https://github.com/soderlind/mu-mailpoet-smtp/issues/1
+>
+> I'll will fix this as soon as the new filer is available.
+
 # MU MailPoet SMTP
 
 Set the SMTP transport for MailPoet
